@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="angForm" novalidate [hidden]="data.operation === 'delete'">
+        <mat-form-field appearance="outline">
+            <mat-label>Name Field</mat-label>
+            <input matInput type="text" placeholder="Name" formControlName="name">
+            <mat-error *ngIf="angForm.controls['name'].errors && angForm.get('name').errors.required">Name is required</mat-error>
+        </mat-form-field>
+    </form>
+
+    <p *ngIf="data.operation === 'delete'">
+        {{ data.message }}
+    </p>
+</div>
+<mat-dialog-actions *ngIf="data.operation !== 'delete'">
+    <button mat-raised-button color="primary" [disabled]="angForm.invalid" (click)="onSubmit()">Submit</button>
+    <button type="button" mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+
+<mat-dialog-actions *ngIf="data.operation === 'delete'">
+    <button mat-raised-button color="primary" (click)="onSubmit()">Yes</button>
+    <button type="button" mat-raised-button color="warn" mat-dialog-close>No</button>
+</mat-dialog-actions>

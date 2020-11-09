@@ -3,5 +3,9 @@
     <h2>
         Sample Application
     </h2>
+
+    <div>
+        <button mat-raised-button *ngFor="let theme of availableThemes" (click)="toggleTheme(theme)" [disabled]=" theme == activeTheme"> {{ theme.name }} </button>
+    </div>
 </div>
 <app-task class="flex-container"></app-task>

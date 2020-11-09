@@ -17,6 +17,7 @@
     text-decoration: none;
     font-weight: bold;
     height: min-content;
+    color: var(--foreground-hyperlink);
 }
 
 .task {
@@ -26,7 +27,7 @@
 }
 
 .cardlist {
-    background-color: #e7ece8;
+    background-color: var(--background-tertiary);
     border: 2px solid #616161;
     padding: 10px;
 }

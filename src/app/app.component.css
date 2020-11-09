@@ -3,10 +3,12 @@
     padding: 15px 15px 15px 25px;
     font-family: Arial, Helvetica, sans-serif;
     border: 2px solid #616161;
+    justify-content: space-between;
 }
 
 .flex-container:first-child {
-    background-color: #673ab7b0;
+    /* background-color: #673ab7b0; */
+    background: var(--background-default);
     border-bottom: none;
 }
 
@@ -16,5 +18,5 @@
 }
 
 .flex-container:last-child {
-    background-color: #673ab742;
+    background-color: var(--background-secondary);
 }

@@ -1,3 +1,7 @@
-    .mat-form-field {
-        width: 100%;
-    }
+::ng-deep .mat-dialog-container {
+    background: var(--background-dialog);
+}
+
+.mat-form-field {
+    width: 100%;
+}

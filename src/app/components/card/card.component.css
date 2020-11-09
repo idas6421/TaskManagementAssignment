@@ -1,7 +1,7 @@
 .card {
     margin-top: 10px;
     border: 2px solid #616161;
-    background-color: #fff;
+    background-color: var(--background-light);
     padding: 10px;
     display: flex;
     flex: 1;
@@ -13,6 +13,7 @@ a {
     margin-top: 10px;
     text-decoration: none;
     font-weight: bold;
+    color: var(--foreground-hyperlink);
 }
 
 .mat-icon {

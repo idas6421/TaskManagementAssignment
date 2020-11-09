@@ -1,7 +1,7 @@
 <div class="row">
     <div class="column" cdkDropList [cdkDropListData]="taskService.taskList" (cdkDropListDropped)="drop($event)">
         <div class="task" *ngFor="let task of taskService.taskList; let indx = index" cdkDrag>
-            <div class="cardlist" cdkDropList [cdkDropListData]="task.cards" (cdkDropListDropped)="drop($event)">
+            <div class="cardlist">
                 <div class="heading">
                     <div>
                         {{ task.name }}
@@ -11,16 +11,7 @@
                         <mat-icon aria-hidden="false" title="Delete" (click)="deleteTask(task)">delete</mat-icon>
                     </div>
                 </div>
-                <div class="card" *ngFor="let card of task.cards; let cardIndx = index" cdkDrag>
-                    <div>
-                        {{ card.name }}
-                    </div>
-                    <div>
-                        <mat-icon aria-hidden="false" title="Edit" (click)="editCard(card, indx)">edit</mat-icon>
-                        <mat-icon aria-hidden="false" title="Delete" (click)="deleteCard(card)">delete</mat-icon>
-                    </div>
-                </div>
-                <a href="javascript:void(0)" (click)="addCard(indx)"> + Add another card</a>
+                <app-card [data]="task.cards" [taskIndex]="indx"></app-card>
             </div>
         </div>
     </div>

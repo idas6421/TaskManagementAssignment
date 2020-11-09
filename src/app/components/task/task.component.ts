@@ -1,7 +1,6 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Card } from 'src/app/model/card.model';
 import { Task } from 'src/app/model/task.model';
 import { TaskService } from 'src/app/service/task.service';
 
@@ -30,27 +29,6 @@ export class TaskComponent implements OnInit {
     });
   }
 
-  addCard(taskIndx: number) {
-    this.dialog.open(DialogComponent, {
-      width: '350px',
-      data: {title: 'Add Card', type: 'card', operation: 'add', taskIndx: taskIndx}
-    });
-  }
-
-  editCard(card: Card, taskIndx: number) {
-    this.dialog.open(DialogComponent, {
-      width: '350px',
-      data: {title: 'Edit Card', type: 'card', operation: 'edit', d: card, taskIndx: taskIndx}
-    });
-  }
-
-  deleteCard(card: Card) {
-    this.dialog.open(DialogComponent, {
-      width: '350px',
-      data: {title: 'Delete Card', type: 'card', operation: 'delete', d: card, message: 'Are you sure you want to delete this item?'}
-    });
-  }
-
   editTask(task: Task) {
     this.dialog.open(DialogComponent, {
       width: '350px',
@@ -66,13 +44,6 @@ export class TaskComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-    }
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   }
 }

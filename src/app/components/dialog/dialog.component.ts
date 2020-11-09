@@ -23,7 +23,7 @@ export class DialogComponent {
   ngOnInit() {
     this.angForm = new FormGroup({
       "id": new FormControl(0),
-      "name": new FormControl("", [ Validators.required])
+      "name": new FormControl("", [ Validators.required, this.duplicateNameValidation.bind(this) ])
     });
   }
 
@@ -31,9 +31,6 @@ export class DialogComponent {
     if(this.data.operation === 'edit') {
       this.angForm.get("id").setValue(this.data.d.id);
       this.angForm.get("name").setValue(this.data.d.name);
-    }else if(this.data.operation === 'delete') {
-      // this.angForm.get("id").setValue(this.data.d.id);
-      // this.angForm.get("name").setValue(this.data.d.name);
     }
     this.cdr.detectChanges();
   }
@@ -68,5 +65,25 @@ export class DialogComponent {
     }
     
     this.dialogRef.close();
+  }
+
+  duplicateNameValidation(control: FormControl) {
+    if (control.value) {
+      let name = control.value.toLowerCase();
+      let isInArray = 0;
+
+      if(this.data.type === "task") {
+        isInArray = this.taskService.taskList.filter(f=> f.name.toLowerCase() === name).length;
+      }else {
+        isInArray = this.taskService.taskList[this.data.taskIndx].cards.filter(f=> f.name.toLowerCase() === name).length;
+      }
+
+      if(isInArray) {
+        return {
+          "duplicateValue": true
+        };
+      }
+    }
+   return null;    
   }
 }

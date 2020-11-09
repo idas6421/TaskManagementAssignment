@@ -5,6 +5,7 @@
             <mat-label>Name Field</mat-label>
             <input matInput type="text" placeholder="Name" formControlName="name">
             <mat-error *ngIf="angForm.controls['name'].errors && angForm.get('name').errors.required">Name is required</mat-error>
+            <mat-error *ngIf="angForm.controls['name'].errors && angForm.get('name').errors.duplicateValue">Name is already exists</mat-error>
         </mat-form-field>
     </form>
 

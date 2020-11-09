@@ -12,10 +12,11 @@
     justify-content: center;
 }
 
-.column a {
+.column>a {
     margin-top: 10px;
     text-decoration: none;
     font-weight: bold;
+    height: min-content;
 }
 
 .task {
@@ -34,21 +35,6 @@
     display: flex;
     justify-content: space-between;
     font-weight: bold;
-}
-
-.card {
-    margin-top: 10px;
-    border: 2px solid #616161;
-    background-color: #fff;
-    padding: 10px;
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-}
-
-.card+a {
-    display: block;
-    margin-bottom: 10px;
 }
 
 .mat-icon {

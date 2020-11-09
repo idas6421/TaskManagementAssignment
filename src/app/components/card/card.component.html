@@ -1,3 +1,13 @@
-<p>
-  card works!
-</p>
+<div cdkDropList [cdkDropListData]="cards" (cdkDropListDropped)="drop($event)">
+    <div class="card" *ngFor="let card of cards;" cdkDrag>
+        <div>
+            {{ card.name }}
+        </div>
+        <div>
+            <mat-icon aria-hidden="false" title="Edit" (click)="editCard(card)">edit</mat-icon>
+            <mat-icon aria-hidden="false" title="Delete" (click)="deleteCard(card)">delete</mat-icon>
+        </div>
+    </div>
+</div>
+
+<a href="javascript:void(0)" (click)="addCard()"> + Add another card</a>

@@ -18,7 +18,7 @@ export class CardService {
   deleteCard(cardId: number) {
     this.taskService.taskList.filter(f=> {
       let cardIndx = f.cards.findIndex(c => c.id === cardId);
-      f.cards.splice(cardIndx, 1);
+      cardIndx >= 0 && f.cards.splice(cardIndx, 1);
     });
   }
   

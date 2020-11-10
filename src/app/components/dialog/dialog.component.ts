@@ -14,8 +14,8 @@ import { TaskService } from 'src/app/service/task.service';
 export class DialogComponent {
   angForm: FormGroup;
   constructor(
-    private taskService: TaskService,
-    private cardService: CardService,
+    public taskService: TaskService,
+    public cardService: CardService,
     private cdr: ChangeDetectorRef,
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}

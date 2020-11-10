@@ -11,16 +11,12 @@ import { DialogComponent } from '../dialog/dialog.component';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
 
   constructor(
-    private taskService: TaskService,
-    private  dialog: MatDialog
+    public taskService: TaskService,
+    public  dialog: MatDialog
   ) { }
-
-  ngOnInit() {
-    
-  }
 
   addList() {
     this.dialog.open(DialogComponent, {

@@ -17,10 +17,6 @@ export class ThemeService {
     return this.active;
   }
 
-  isDarkTheme(): boolean {
-    return this.active.name === dark.name;
-  }
-
   setDarkTheme(): void {
     this.setActiveTheme(dark);
   }

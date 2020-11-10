@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
   @Input('taskIndex') taskIndx: number;
 
   constructor(
-    private  dialog: MatDialog
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {

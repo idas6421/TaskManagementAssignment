@@ -6,7 +6,9 @@ import { TaskService } from "./task.service";
 describe('TaskService', () => {
     let service: TaskService;
   beforeEach(() => {
-      service = TestBed.get(TaskService);
+    service = TestBed.get(TaskService);   
+    service.taskList = [];       
+    localStorage.clear();
   });
     
   it('should be created', () => {

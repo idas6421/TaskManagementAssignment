@@ -41,6 +41,7 @@ describe('DialogComponent', () => {
       new Card(2, 'Card 22')
     ];
     component.taskService.taskList = [ task1, task2 ];
+    localStorage.clear();
   });
 
   it('should create', () => {

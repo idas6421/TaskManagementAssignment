@@ -23,6 +23,7 @@ describe('TaskComponent', () => {
     component = fixture.componentInstance as TaskComponent;
     fixture.detectChanges();
     spyOn(component.dialog, "open");
+    localStorage.clear();
   });
 
   it('should create', () => {

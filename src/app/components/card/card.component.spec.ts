@@ -23,6 +23,7 @@ describe('CardComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     spyOn(component.dialog, "open");
+    localStorage.clear();
   });
 
   it('should create', () => {
@@ -46,12 +47,26 @@ describe('CardComponent', () => {
     expect(component.deleteCard).toBeTruthy();
   });
 
-  it('should handle drag and drop', () => {
+  it('should handle drag and drop for same container', () => {
+    const _obj = <CdkDropList>{ data: [1, 2, 3] };
+    const _cdkDragDrop: CdkDragDrop<any> = {
+      container: _obj,
+      currentIndex: 1,
+      previousIndex: 0,
+      previousContainer: _obj,
+      isPointerOverContainer: true,
+      item: <CdkDrag>{}
+    };
+    component.drop(_cdkDragDrop);
+    expect(component.drop).toBeTruthy();
+  });
+
+  it('should handle drag and drop for different container', () => {
     const _cdkDragDrop: CdkDragDrop<any> = {
       container: <CdkDropList>{ data: [1, 2, 3] },
       currentIndex: 1,
       previousIndex: 0,
-      previousContainer: <CdkDropList>{},
+      previousContainer: <CdkDropList>{ data: [1, 2 ] },
       isPointerOverContainer: true,
       item: <CdkDrag>{}
     };

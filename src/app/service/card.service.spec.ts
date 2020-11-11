@@ -11,6 +11,7 @@ describe('CardService', () => {
     beforeEach(()=> {
         taskService = new TaskService();
         service = new CardService(taskService);
+        localStorage.clear();
     });
 
     it('should be created', () => {

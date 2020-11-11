@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="column" cdkDropList [cdkDropListData]="taskService.taskList" (cdkDropListDropped)="drop($event)">
+    <div class="column" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="taskService.taskList" (cdkDropListDropped)="drop($event)">
         <div class="task" *ngFor="let task of taskService.taskList; let indx = index" cdkDrag>
             <div class="cardlist">
                 <div class="heading">

@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from 'src/app/model/task.model';
 import { TaskService } from 'src/app/service/task.service';
@@ -41,5 +41,6 @@ export class TaskComponent {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    this.taskService.updatePosition();
   }
 }

@@ -1,4 +1,4 @@
-<div cdkDropList [cdkDropListData]="cards" (cdkDropListDropped)="drop($event)">
+<div cdkDropList [cdkDropListData]="cards" (cdkDropListDropped)="drop($event)" [attr.data-taskIndx]="taskIndx" id="taskId{{taskIndx+1}}" [cdkDropListConnectedTo]="connectedList">
     <div class="card" *ngFor="let card of cards;" cdkDrag>
         <div>
             {{ card.name }}

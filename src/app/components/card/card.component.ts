@@ -1,7 +1,8 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Card } from 'src/app/model/card.model';
+import { TaskService } from 'src/app/service/task.service';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
@@ -9,15 +10,16 @@ import { DialogComponent } from '../dialog/dialog.component';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input('data') cards: Card[];
   @Input('taskIndex') taskIndx: number;
+  connectedList: string[] = [];
 
   constructor(
+    public taskService: TaskService, 
     public dialog: MatDialog
-  ) { }
-
-  ngOnInit() {
+  ) { 
+    this.connectedList = this.taskService.taskList.map(m=> { return `taskId${m.id}` });
   }
 
   addCard() {
@@ -41,7 +43,20 @@ export class CardComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  drop(event: CdkDragDrop<[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);      
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+      //const taskindx = parseInt(event.previousContainer.element.nativeElement.dataset.taskindx);
+      //this.taskService.taskList[taskindx].cards = event.previousContainer.data;
+    }
+
+    // const taskindx = parseInt(event.container.element.nativeElement.dataset.taskindx);
+    // this.taskService.taskList[taskindx].cards = event.container.data;
+    this.taskService.updatePosition();
   }
 }

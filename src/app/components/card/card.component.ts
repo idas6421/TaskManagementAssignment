@@ -51,12 +51,7 @@ export class CardComponent {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-      //const taskindx = parseInt(event.previousContainer.element.nativeElement.dataset.taskindx);
-      //this.taskService.taskList[taskindx].cards = event.previousContainer.data;
     }
-
-    // const taskindx = parseInt(event.container.element.nativeElement.dataset.taskindx);
-    // this.taskService.taskList[taskindx].cards = event.container.data;
     this.taskService.updatePosition();
   }
 }
